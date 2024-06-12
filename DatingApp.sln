@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B89EB7E4-C25B-4105-8862-6B66C87D0B69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingApp.Core", "src\DatingApp.Core\DatingApp.Core.csproj", "{FCE4AEF6-41E0-4EFE-90F3-2519E2627893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingApp.Infrastructure", "src\DatingApp.Infrastructure\DatingApp.Infrastructure.csproj", "{DDBE3002-E880-4733-A589-6898982F29B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingApp.Application", "src\DatingApp.Application\DatingApp.Application.csproj", "{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingApp.API", "src\DatingApp.API\DatingApp.API.csproj", "{C0E51A0F-791A-47E1-94E5-0A60DF6940AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{250F283E-FE2F-4BBD-9E63-A2265B84E23F}"
+    ProjectSection(SolutionItems) = preProject
+        .editorconfig = .editorconfig
+    EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCE4AEF6-41E0-4EFE-90F3-2519E2627893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE4AEF6-41E0-4EFE-90F3-2519E2627893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE4AEF6-41E0-4EFE-90F3-2519E2627893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE4AEF6-41E0-4EFE-90F3-2519E2627893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBE3002-E880-4733-A589-6898982F29B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBE3002-E880-4733-A589-6898982F29B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBE3002-E880-4733-A589-6898982F29B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBE3002-E880-4733-A589-6898982F29B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E51A0F-791A-47E1-94E5-0A60DF6940AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E51A0F-791A-47E1-94E5-0A60DF6940AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E51A0F-791A-47E1-94E5-0A60DF6940AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E51A0F-791A-47E1-94E5-0A60DF6940AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCE4AEF6-41E0-4EFE-90F3-2519E2627893} = {B89EB7E4-C25B-4105-8862-6B66C87D0B69}
+		{DDBE3002-E880-4733-A589-6898982F29B6} = {B89EB7E4-C25B-4105-8862-6B66C87D0B69}
+		{5DFF142E-3A18-4FAB-AA2F-E65A200C18EB} = {B89EB7E4-C25B-4105-8862-6B66C87D0B69}
+		{C0E51A0F-791A-47E1-94E5-0A60DF6940AD} = {B89EB7E4-C25B-4105-8862-6B66C87D0B69}
+	EndGlobalSection
+EndGlobal

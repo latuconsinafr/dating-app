@@ -1,0 +1,11 @@
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/bin/Debug/net8.0/DatingApp.Infrastructure.deps.json
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/bin/Debug/net8.0/DatingApp.Infrastructure.dll
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/bin/Debug/net8.0/DatingApp.Infrastructure.pdb
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.AssemblyInfoInputs.cache
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.AssemblyInfo.cs
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.dll
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/refint/DatingApp.Infrastructure.dll
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/DatingApp.Infrastructure.pdb
+/Users/latuconsinafr/Personal/IT/Projects/Dating App/src/DatingApp.Infrastructure/obj/Debug/net8.0/ref/DatingApp.Infrastructure.dll
