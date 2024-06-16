@@ -1,4 +1,5 @@
-﻿using DatingApp.Application.Profiles;
+﻿using DatingApp.Application.Common.Enums;
+using DatingApp.Application.Profiles;
 using DatingApp.Application.Profiles.Create;
 using DatingApp.Application.Profiles.Delete;
 using DatingApp.Application.Profiles.Get;
@@ -21,9 +22,9 @@ public class ProfilesController(IMediator mediator) : ControllerBase
   {
     try
     {
-      var profiles = await _mediator.Send(new GetAllProfilesQuery());
+      var result = await _mediator.Send(new GetAllProfilesQuery());
 
-      return Ok(profiles);
+      return Ok(result.Value);
     }
     catch (Exception ex)
     {
@@ -36,14 +37,19 @@ public class ProfilesController(IMediator mediator) : ControllerBase
   {
     try
     {
-      var profile = await _mediator.Send(new GetProfileQuery(id));
+      var result = await _mediator.Send(new GetProfileQuery(id));
 
-      if (profile == null)
+      if (result.IsSuccess)
+      {
+        return Ok(result.Value);
+      }
+
+      if (result.Error == ErrorCode.NotFound)
       {
         return NotFound();
       }
 
-      return Ok(profile);
+      return StatusCode(500, result);
     }
     catch (Exception ex)
     {
@@ -56,9 +62,9 @@ public class ProfilesController(IMediator mediator) : ControllerBase
   {
     try
     {
-      var createdProfile = await _mediator.Send(command);
+      var result = await _mediator.Send(command);
 
-      return StatusCode(201, createdProfile);
+      return StatusCode(201, result.Value);
     }
     catch (Exception ex)
     {
@@ -76,14 +82,19 @@ public class ProfilesController(IMediator mediator) : ControllerBase
         return Conflict();
       }
 
-      var updatedProfile = await _mediator.Send(command);
+      var result = await _mediator.Send(command);
 
-      if (updatedProfile == null)
+      if (result.IsSuccess)
+      {
+        return Ok(result.Value);
+      }
+
+      if (result.Error == ErrorCode.NotFound)
       {
         return NotFound();
       }
 
-      return Ok(updatedProfile);
+      return StatusCode(500, result);
     }
     catch (Exception ex)
     {
@@ -96,14 +107,19 @@ public class ProfilesController(IMediator mediator) : ControllerBase
   {
     try
     {
-      var profile = await _mediator.Send(new DeleteProfileCommand(id));
+      var result = await _mediator.Send(new DeleteProfileCommand(id));
 
-      if (profile == null)
+      if (result.IsSuccess)
+      {
+        return NoContent();
+      }
+
+      if (result.Error == ErrorCode.NotFound)
       {
         return NotFound();
       }
 
-      return NoContent();
+      return StatusCode(500, result);
     }
     catch (Exception ex)
     {

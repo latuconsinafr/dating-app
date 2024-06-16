@@ -1,4 +1,5 @@
 using System.Reflection;
+using DatingApp.Application.Common.Models;
 using DatingApp.Application.Profiles;
 using DatingApp.Application.Profiles.Create;
 using DatingApp.Application.Profiles.Delete;
@@ -61,11 +62,11 @@ void ConfigureMediatR()
   builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(assembles!));
 
   // Request handler
-  builder.Services.AddTransient<IRequestHandler<GetAllProfilesQuery, List<ProfileDto>>, GetAllProfilesQueryHandler>();
-  builder.Services.AddTransient<IRequestHandler<GetProfileQuery, ProfileDto?>, GetProfileQueryHandler>();
-  builder.Services.AddTransient<IRequestHandler<CreateProfileCommand, ProfileDto>, CreateProfileCommandHandler>();
-  builder.Services.AddTransient<IRequestHandler<UpdateProfileCommand, ProfileDto?>, UpdateProfileCommandHandler>();
-  builder.Services.AddTransient<IRequestHandler<DeleteProfileCommand, ProfileDto?>, DeleteProfileCommandHandler>();
+  builder.Services.AddTransient<IRequestHandler<GetAllProfilesQuery, Result<IEnumerable<ProfileDto>>>, GetAllProfilesQueryHandler>();
+  builder.Services.AddTransient<IRequestHandler<GetProfileQuery, Result<ProfileDto>>, GetProfileQueryHandler>();
+  builder.Services.AddTransient<IRequestHandler<CreateProfileCommand, Result<ProfileDto>>, CreateProfileCommandHandler>();
+  builder.Services.AddTransient<IRequestHandler<UpdateProfileCommand, Result<ProfileDto>>, UpdateProfileCommandHandler>();
+  builder.Services.AddTransient<IRequestHandler<DeleteProfileCommand, Result<ProfileDto>>, DeleteProfileCommandHandler>();
 }
 
 app.Run();

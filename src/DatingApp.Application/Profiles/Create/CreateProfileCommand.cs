@@ -1,10 +1,11 @@
-﻿using DatingApp.Core.Aggregates.Profiles.Entities;
+﻿using DatingApp.Application.Common.Models;
+using DatingApp.Core.Aggregates.Profiles.Entities;
 using DatingApp.Core.Aggregates.Profiles.Enums;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.Create;
 
-public class CreateProfileCommand(string firstName, string lastName, ProfileGender gender, ProfileLookingFor lookingFor) : IRequest<ProfileDto>
+public class CreateProfileCommand(string firstName, string lastName, ProfileGender gender, ProfileLookingFor lookingFor) : IRequest<Result<ProfileDto>>
 {
   public string FirstName { get; private set; } = firstName;
   public string LastName { get; private set; } = lastName;
