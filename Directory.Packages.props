@@ -1,0 +1,16 @@
+<Project>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="MediatR" Version="12.3.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
+  </ItemGroup>
+</Project>

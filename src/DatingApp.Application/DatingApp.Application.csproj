@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+  
+   <ItemGroup>
+    <ProjectReference Include="..\DatingApp.Core\DatingApp.Core.csproj" />
+  </ItemGroup>
+  
 </Project>

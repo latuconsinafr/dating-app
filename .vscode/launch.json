@@ -10,9 +10,9 @@
             "request": "launch", // `attach` is another type where you attach to an already running process
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/DatingApp.API/bin/Debug/net8.0/DatingApp.API.dll",
+            "program": "${workspaceFolder}/src/DatingApp.Web/bin/Debug/net8.0/DatingApp.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/DatingApp.API",
+            "cwd": "${workspaceFolder}/src/DatingApp.Web",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
