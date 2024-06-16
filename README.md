@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">This is a sample application of dating mobile app similar to <a href="https://tinder.com/">Tinder</a>/<a href="https://bumble.com/">Bumble</a>. <br />Built from scratch on top of .NET Core framework and under RESTful APIs architecture.</p>
+  <p align="center">This is a sample application of a dating mobile app similar to <a href="https://tinder.com/">Tinder</a>/<a href="https://bumble.com/">Bumble</a>. <br />Built from scratch on top of .NET Core framework and under RESTful APIs architecture.</p>
 
 ## Description
 
@@ -19,14 +19,14 @@
     |    ├── DatingApp.Core             # This is the domain model.
     |    ├── DatingApp.Infrastructure   # The only project that should have code concerned with EF, Files, Email, etc.
     |    ├── DatingApp.Application      # The layer contains the application logic.
-    |    └── DatingApp.API              # The entry point of the application (or the presentation), in this case API.
+    |    └── DatingApp.Web              # The entry point of the application (or the presentation), in this case, API.
     └── ...
 
-> Please follow the current folder & files structure 
+> Please follow the current folder & file structure 
   
 ## Installation and running the app
 
-You can run the solution or the web project itself. If you encountered any HTTPS development certificate, follow the instruction available on the official documentation [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-8.0&tabs=visual-studio-code#tabpanel_3_visual-studio-code). Or you can simply type
+You can run the solution or the web project itself. If you encountered any HTTPS development certificate, follow the instructions available on the official documentation [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-8.0&tabs=visual-studio-code#tabpanel_3_visual-studio-code). Or you can simply type
 
 ```sh
 dotnet dev-certs https --trust
@@ -34,7 +34,7 @@ dotnet dev-certs https --trust
 
 ## Support
 
-This sample application built on top of .NET Core framework. If you want to support the author, you can reach the author [here](mailto:faristalatuconsina@gmail.com).
+This sample application is built on top of the .NET Core framework. If you want to support the author, you can reach the author [here](mailto:faristalatuconsina@gmail.com).
 
 ## Stay in touch
 
