@@ -16,7 +16,7 @@ public class GetProfileQueryHandler(IRepository<Profile> repository) : IRequestH
 
     if (profile == null)
     {
-      return Result.Failure<ProfileDto>(ErrorCode.NotFound);
+      return Result.Failure<ProfileDto>(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
     }
 
     var profileDto = ProfileDto.FromEntity(profile);

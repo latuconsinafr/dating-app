@@ -4,7 +4,7 @@ namespace DatingApp.Application.Common.Interfaces;
 
 public interface IResult
 {
-  public ErrorCode Error { get; }
+  public ResultStatus Status { get; }
   public bool IsSuccess { get; }
   public string Message { get; }
 }

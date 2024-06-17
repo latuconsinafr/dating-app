@@ -16,7 +16,7 @@ public class UpdateProfileCommandHandler(IRepository<Profile> repository) : IReq
 
     if (existingProfile == null)
     {
-      return Result.Failure<ProfileDto>(ErrorCode.NotFound);
+      return Result.Failure<ProfileDto>(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
     }
 
     existingProfile = request.ToEntity(existingProfile);

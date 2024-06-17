@@ -6,21 +6,21 @@ using MediatR;
 
 namespace DatingApp.Application.Profiles.Delete;
 
-public class DeleteProfileCommandHandler(IRepository<Profile> repository) : IRequestHandler<DeleteProfileCommand, Result<ProfileDto>>
+public class DeleteProfileCommandHandler(IRepository<Profile> repository) : IRequestHandler<DeleteProfileCommand, Result>
 {
   private readonly IRepository<Profile> _repository = repository;
 
-  public async Task<Result<ProfileDto>> Handle(DeleteProfileCommand request, CancellationToken cancellationToken)
+  public async Task<Result> Handle(DeleteProfileCommand request, CancellationToken cancellationToken)
   {
     var existingProfile = await _repository.GetByIdAsync(request.ProfileId, cancellationToken);
 
     if (existingProfile == null)
     {
-      return Result.Failure<ProfileDto>(ErrorCode.NotFound);
+      return Result.Failure(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
     }
 
     await _repository.DeleteAsync(existingProfile.Id, cancellationToken);
 
-    return Result.Success<ProfileDto>();
+    return Result.Success();
   }
 }

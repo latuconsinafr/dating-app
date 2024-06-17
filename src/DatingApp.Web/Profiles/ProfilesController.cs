@@ -1,12 +1,11 @@
-﻿using DatingApp.Application.Common.Enums;
-using DatingApp.Application.Profiles;
+﻿using DatingApp.Application.Profiles;
 using DatingApp.Application.Profiles.Create;
 using DatingApp.Application.Profiles.Delete;
 using DatingApp.Application.Profiles.Get;
 using DatingApp.Application.Profiles.GetAll;
 using DatingApp.Application.Profiles.Update;
+using DatingApp.Web.Common.Models;
 using MediatR;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.Web.Profiles;
@@ -18,17 +17,17 @@ public class ProfilesController(IMediator mediator) : ControllerBase
   private readonly IMediator _mediator = mediator;
 
   [HttpGet]
-  public async Task<ActionResult<List<ProfileDto>>> GetAllProfiles()
+  public async Task<ActionResult<IEnumerable<ProfileDto>>> GetAllProfiles()
   {
     try
     {
       var result = await _mediator.Send(new GetAllProfilesQuery());
 
-      return Ok(result.Value);
+      return ResponseWrapper.Return(HttpContext, result);
     }
     catch (Exception ex)
     {
-      return StatusCode(500, ex.Message);
+      return ResponseWrapper.Error(HttpContext, ex.Message);
     }
   }
 
@@ -39,21 +38,11 @@ public class ProfilesController(IMediator mediator) : ControllerBase
     {
       var result = await _mediator.Send(new GetProfileQuery(id));
 
-      if (result.IsSuccess)
-      {
-        return Ok(result.Value);
-      }
-
-      if (result.Error == ErrorCode.NotFound)
-      {
-        return NotFound();
-      }
-
-      return StatusCode(500, result);
+      return ResponseWrapper.Return(HttpContext, result);
     }
     catch (Exception ex)
     {
-      return StatusCode(500, ex.Message);
+      return ResponseWrapper.Error(HttpContext, ex.Message);
     }
   }
 
@@ -64,11 +53,11 @@ public class ProfilesController(IMediator mediator) : ControllerBase
     {
       var result = await _mediator.Send(command);
 
-      return StatusCode(201, result.Value);
+      return ResponseWrapper.Return(HttpContext, result);
     }
     catch (Exception ex)
     {
-      return StatusCode(500, ex.Message);
+      return ResponseWrapper.Error(HttpContext, ex.Message);
     }
   }
 
@@ -84,46 +73,26 @@ public class ProfilesController(IMediator mediator) : ControllerBase
 
       var result = await _mediator.Send(command);
 
-      if (result.IsSuccess)
-      {
-        return Ok(result.Value);
-      }
-
-      if (result.Error == ErrorCode.NotFound)
-      {
-        return NotFound();
-      }
-
-      return StatusCode(500, result);
+      return ResponseWrapper.Return(HttpContext, result);
     }
     catch (Exception ex)
     {
-      return StatusCode(500, ex.Message);
+      return ResponseWrapper.Error(HttpContext, ex.Message);
     }
   }
 
   [HttpDelete("{id}")]
-  public async Task<ActionResult<ProfileDto>> DeleteProfile(Guid id)
+  public async Task<ActionResult> DeleteProfile(Guid id)
   {
     try
     {
       var result = await _mediator.Send(new DeleteProfileCommand(id));
 
-      if (result.IsSuccess)
-      {
-        return NoContent();
-      }
-
-      if (result.Error == ErrorCode.NotFound)
-      {
-        return NotFound();
-      }
-
-      return StatusCode(500, result);
+      return ResponseWrapper.Return(HttpContext, result);
     }
     catch (Exception ex)
     {
-      return StatusCode(500, ex.Message);
+      return ResponseWrapper.Error(HttpContext, ex.Message);
     }
   }
 }

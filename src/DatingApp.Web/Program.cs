@@ -66,7 +66,7 @@ void ConfigureMediatR()
   builder.Services.AddTransient<IRequestHandler<GetProfileQuery, Result<ProfileDto>>, GetProfileQueryHandler>();
   builder.Services.AddTransient<IRequestHandler<CreateProfileCommand, Result<ProfileDto>>, CreateProfileCommandHandler>();
   builder.Services.AddTransient<IRequestHandler<UpdateProfileCommand, Result<ProfileDto>>, UpdateProfileCommandHandler>();
-  builder.Services.AddTransient<IRequestHandler<DeleteProfileCommand, Result<ProfileDto>>, DeleteProfileCommandHandler>();
+  builder.Services.AddTransient<IRequestHandler<DeleteProfileCommand, Result>, DeleteProfileCommandHandler>();
 }
 
 app.Run();

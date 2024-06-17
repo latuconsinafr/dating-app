@@ -1,4 +1,5 @@
-﻿using DatingApp.Application.Common.Models;
+﻿using DatingApp.Application.Common.Enums;
+using DatingApp.Application.Common.Models;
 using DatingApp.Core.Aggregates.Profiles.Entities;
 using DatingApp.Core.Repositories;
 using MediatR;
@@ -15,6 +16,6 @@ public class CreateProfileCommandHandler(IRepository<Profile> repository) : IReq
     var createdProfile = await _repository.AddAsync(profile, cancellationToken);
     var createdProfileDto = ProfileDto.FromEntity(createdProfile);
 
-    return Result.Success(createdProfileDto);
+    return Result.Success(createdProfileDto, ResultStatus.Created);
   }
 }
