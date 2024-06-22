@@ -28,6 +28,76 @@
 			"detail": "Publish the solution"
 		},
 		{
+			"label": "watch-core",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"run"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/DatingApp.Core"
+			},
+			"problemMatcher": "$msCompile",
+			"group": "build",
+			"detail": "Watch and run core project"
+		},
+		{
+			"label": "watch-infrastructure",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"run"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/DatingApp.Infrastructure"
+			},
+			"problemMatcher": "$msCompile",
+			"group": "build",
+			"detail": "Watch and run infrastructure project"
+		},
+		{
+			"label": "watch-application",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"run"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/DatingApp.Application"
+			},
+			"problemMatcher": "$msCompile",
+			"group": "build",
+			"detail": "Watch and run application project"
+		},
+		{
+			"label": "watch-web",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"run"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/DatingApp.Web"
+			},
+			"problemMatcher": "$msCompile",
+			"group": "build",
+			"detail": "Watch and run web project"
+		},
+		{
+      "label": "watch-all",
+      "dependsOn": [
+        "watch-core",
+        "watch-infrastructure",
+        "watch-application",
+        "watch-web"
+      ],
+      "dependsOrder": "parallel"
+    },
+		{
 			"label": "watch",
 			"command": "dotnet",
 			"type": "process",

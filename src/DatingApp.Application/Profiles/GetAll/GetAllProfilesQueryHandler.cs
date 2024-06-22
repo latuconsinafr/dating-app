@@ -1,18 +1,17 @@
 ﻿using DatingApp.Application.Common.Models;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Repositories;
+using DatingApp.Core.Profiles.Repositories;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.GetAll;
 
-public class GetAllProfilesQueryHandler(IRepository<Profile> repository) : IRequestHandler<GetAllProfilesQuery, Result<IEnumerable<ProfileDto>>>
+public class GetAllProfilesQueryHandler(IProfileRepository repository) : IRequestHandler<GetAllProfilesQuery, Result<IReadOnlyList<ProfileDto>>>
 {
-  private readonly IRepository<Profile> _repository = repository;
+  private readonly IProfileRepository _repository = repository;
 
-  public async Task<Result<IEnumerable<ProfileDto>>> Handle(GetAllProfilesQuery request, CancellationToken cancellationToken)
+  public async Task<Result<IReadOnlyList<ProfileDto>>> Handle(GetAllProfilesQuery request, CancellationToken cancellationToken)
   {
     var profiles = await _repository.GetAllAsync(cancellationToken);
-    var profileDtos = profiles.Select(ProfileDto.FromEntity);
+    IReadOnlyList<ProfileDto> profileDtos = profiles.Select(ProfileDto.FromEntity).ToList().AsReadOnly();
 
     return Result.Success(profileDtos);
   }

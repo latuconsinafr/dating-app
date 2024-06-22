@@ -1,4 +1,5 @@
-﻿using DatingApp.Core.Repositories;
+﻿using DatingApp.Core.Common.Repositories;
+using DatingApp.Core.Profiles.Repositories;
 using DatingApp.Infrastructure.Data;
 using DatingApp.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,9 @@ public static class InfrastructureServiceExtensions
     services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
     services.AddScoped<AppDbContextInit>();
-    services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+    services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+    services.AddScoped<IProfileRepository, ProfileRepository>();
 
     return services;
   }

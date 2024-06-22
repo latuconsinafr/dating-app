@@ -1,22 +1,21 @@
-﻿using DatingApp.Application.Common.Enums;
-using DatingApp.Application.Common.Models;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Repositories;
+﻿using DatingApp.Application.Common.Models;
+using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Repositories;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.Get;
 
-public class GetProfileQueryHandler(IRepository<Profile> repository) : IRequestHandler<GetProfileQuery, Result<ProfileDto>>
+public class GetProfileQueryHandler(IProfileRepository repository) : IRequestHandler<GetProfileQuery, Result<ProfileDto>>
 {
-  private readonly IRepository<Profile> _repository = repository;
+  private readonly IProfileRepository _repository = repository;
 
-  public async Task<Result<ProfileDto>> Handle(GetProfileQuery request, CancellationToken cancellationToken)
+  public async Task<Result<ProfileDto>> Handle(GetProfileQuery query, CancellationToken cancellationToken)
   {
-    var profile = await _repository.GetByIdAsync(request.ProfileId, cancellationToken);
+    var profile = await _repository.GetByIdAsync(query.Id, cancellationToken);
 
     if (profile == null)
     {
-      return Result.Failure<ProfileDto>(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
+      return Result.Failure<ProfileDto>($"{nameof(Profile)} not found.");
     }
 
     var profileDto = ProfileDto.FromEntity(profile);

@@ -1,6 +1,6 @@
 ﻿using DatingApp.Application.Common.Models;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Aggregates.Profiles.Enums;
+using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Enums;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.Update;

@@ -1,10 +1,10 @@
-﻿using DatingApp.Core.Repositories;
+﻿using DatingApp.Core.Common.Repositories;
 using DatingApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.Infrastructure.Repositories;
 
-public class Repository<T>(AppDbContext context) : IRepository<T> where T : class
+public class BaseRepository<T>(AppDbContext context) : IBaseRepository<T> where T : class
 {
   private readonly AppDbContext _context = context;
 
@@ -16,14 +16,14 @@ public class Repository<T>(AppDbContext context) : IRepository<T> where T : clas
     return entity;
   }
 
-  public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
+  public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
   {
     return await _context.Set<T>().ToListAsync(cancellationToken);
   }
 
   public async Task<T?> GetByIdAsync<TId>(TId id, CancellationToken cancellationToken = default) where TId : notnull
   {
-    return await _context.Set<T>().FindAsync(id);
+    return await _context.Set<T>().FindAsync([id], cancellationToken: cancellationToken);
   }
 
   public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
@@ -34,7 +34,7 @@ public class Repository<T>(AppDbContext context) : IRepository<T> where T : clas
 
   public async Task DeleteAsync<TId>(TId id, CancellationToken cancellationToken = default) where TId : notnull
   {
-    var entity = await _context.Set<T>().FindAsync([id], cancellationToken: cancellationToken);
+    var entity = await GetByIdAsync(id, cancellationToken);
 
     if (entity != null)
     {

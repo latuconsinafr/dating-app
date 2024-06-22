@@ -1,26 +1,25 @@
-﻿using DatingApp.Application.Common.Enums;
-using DatingApp.Application.Common.Models;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Repositories;
+﻿using DatingApp.Application.Common.Models;
+using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Repositories;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.Delete;
 
-public class DeleteProfileCommandHandler(IRepository<Profile> repository) : IRequestHandler<DeleteProfileCommand, Result>
+public class DeleteProfileCommandHandler(IProfileRepository repository) : IRequestHandler<DeleteProfileCommand, Result<bool>>
 {
-  private readonly IRepository<Profile> _repository = repository;
+  private readonly IProfileRepository _repository = repository;
 
-  public async Task<Result> Handle(DeleteProfileCommand request, CancellationToken cancellationToken)
+  public async Task<Result<bool>> Handle(DeleteProfileCommand command, CancellationToken cancellationToken)
   {
-    var existingProfile = await _repository.GetByIdAsync(request.ProfileId, cancellationToken);
+    var existingProfile = await _repository.GetByIdAsync(command.Id, cancellationToken);
 
     if (existingProfile == null)
     {
-      return Result.Failure(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
+      return Result.Failure<bool>($"{nameof(Profile)} not found.");
     }
 
     await _repository.DeleteAsync(existingProfile.Id, cancellationToken);
 
-    return Result.Success();
+    return Result.Success(true);
   }
 }

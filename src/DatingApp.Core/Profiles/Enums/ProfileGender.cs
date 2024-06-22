@@ -1,4 +1,4 @@
-﻿namespace DatingApp.Core.Aggregates.Profiles.Enums;
+﻿namespace DatingApp.Core.Profiles.Enums;
 
 public enum ProfileGender
 {

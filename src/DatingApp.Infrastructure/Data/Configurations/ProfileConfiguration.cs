@@ -1,6 +1,7 @@
-﻿using DatingApp.Core.Aggregates.Profiles;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Aggregates.Profiles.Enums;
+﻿using DatingApp.Core.Profiles;
+using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Enums;
+using DatingApp.Core.Profiles.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,7 +14,11 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
     builder.HasKey(builder => builder.Id);
 
     builder.Property(p => p.Id)
-        .ValueGeneratedNever();
+      .ValueGeneratedNever()
+      .HasConversion(
+        id => id.Value,
+        value => new ProfileId(value)
+      );
 
     builder.Property(p => p.FirstName)
       .IsRequired()

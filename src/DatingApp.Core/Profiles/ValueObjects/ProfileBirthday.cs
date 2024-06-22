@@ -1,12 +1,14 @@
-﻿namespace DatingApp.Core.Aggregates.Profiles.ValueObjects;
+﻿using DatingApp.Core.Common.ValueObjects;
 
-public sealed class Birthday(int month, int day, int year) : ValueObject
+namespace DatingApp.Core.Profiles.ValueObjects;
+
+public sealed class ProfileBirthday(int month, int day, int year) : BaseValueObject
 {
   public int Month { get; private set; } = month;
   public int Day { get; private set; } = day;
   public int Year { get; private set; } = year;
 
-  public Birthday() : this(0, 0, 0) { }
+  public ProfileBirthday() : this(0, 0, 0) { }
 
   public void ChangeDate(int month, int day, int year)
   {

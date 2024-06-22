@@ -1,25 +1,24 @@
-﻿using DatingApp.Application.Common.Enums;
-using DatingApp.Application.Common.Models;
-using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Repositories;
+﻿using DatingApp.Application.Common.Models;
+using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Repositories;
 using MediatR;
 
 namespace DatingApp.Application.Profiles.Update;
 
-public class UpdateProfileCommandHandler(IRepository<Profile> repository) : IRequestHandler<UpdateProfileCommand, Result<ProfileDto>>
+public class UpdateProfileCommandHandler(IProfileRepository repository) : IRequestHandler<UpdateProfileCommand, Result<ProfileDto>>
 {
-  private readonly IRepository<Profile> _repository = repository;
+  private readonly IProfileRepository _repository = repository;
 
-  public async Task<Result<ProfileDto>> Handle(UpdateProfileCommand request, CancellationToken cancellationToken)
+  public async Task<Result<ProfileDto>> Handle(UpdateProfileCommand command, CancellationToken cancellationToken)
   {
-    var existingProfile = await _repository.GetByIdAsync(request.Id);
+    var existingProfile = await _repository.GetByIdAsync(command.Id);
 
     if (existingProfile == null)
     {
-      return Result.Failure<ProfileDto>(ResultStatus.NotFound, $"{nameof(Profile)} not found.");
+      return Result.Failure<ProfileDto>($"{nameof(Profile)} not found.");
     }
 
-    existingProfile = request.ToEntity(existingProfile);
+    existingProfile = command.ToEntity(existingProfile);
 
     await _repository.UpdateAsync(existingProfile, cancellationToken);
 

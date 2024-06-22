@@ -1,17 +1,17 @@
-﻿using DatingApp.Core.Aggregates.Profiles.Entities;
-using DatingApp.Core.Aggregates.Profiles.Enums;
-using DatingApp.Core.Aggregates.Profiles.ValueObjects;
+﻿using DatingApp.Core.Profiles.Entities;
+using DatingApp.Core.Profiles.Enums;
+using DatingApp.Core.Profiles.ValueObjects;
 
 namespace DatingApp.Application.Profiles;
 
 public class ProfileDto
 {
-  public Guid Id { get; set; }
+  public ProfileId Id { get; set; } = ProfileId.New();
   public string FirstName { get; set; } = string.Empty;
   public string LastName { get; set; } = string.Empty;
-  public BirthdayDto Birthday { get; set; } = new();
-  public ProfileGender Gender { get; set; }
-  public ProfileLookingFor LookingFor { get; set; }
+  public ProfileBirthdayDto Birthday { get; set; } = new();
+  public ProfileGender Gender { get; set; } = ProfileGender.None;
+  public ProfileLookingFor LookingFor { get; set; } = ProfileLookingFor.None;
 
   public static ProfileDto FromEntity(Profile profile)
   {
@@ -20,23 +20,22 @@ public class ProfileDto
       Id = profile.Id,
       FirstName = profile.FirstName,
       LastName = profile.LastName,
-      Birthday = BirthdayDto.FromEntity(profile.Birthday),
+      Birthday = ProfileBirthdayDto.FromEntity(profile.Birthday),
       Gender = profile.Gender,
       LookingFor = profile.LookingFor
     };
   }
 }
 
-
-public class BirthdayDto
+public class ProfileBirthdayDto
 {
   public int Month { get; set; }
   public int Day { get; set; }
   public int Year { get; set; }
 
-  public static BirthdayDto FromEntity(Birthday birthday)
+  public static ProfileBirthdayDto FromEntity(ProfileBirthday birthday)
   {
-    return new BirthdayDto
+    return new ProfileBirthdayDto
     {
       Month = birthday.Month,
       Day = birthday.Day,

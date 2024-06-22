@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using DatingApp.Core.Aggregates.Profiles.Entities;
+using DatingApp.Core.Profiles.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.Infrastructure.Data;

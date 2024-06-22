@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DatingApp.Application.Profiles.GetAll;
 
-public record GetAllProfilesQuery : IRequest<Result<IEnumerable<ProfileDto>>>
+public record GetAllProfilesQuery : IRequest<Result<IReadOnlyList<ProfileDto>>>
 {
 }
 
